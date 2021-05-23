@@ -37,7 +37,7 @@ class Test extends Component {
   }
   
   render() {
-    const { arr, title } = this.state;
+    const { arr } = this.state;
     const { arg1 } = this.props;
     const { container, myClass } = style;
     console.log(this);
