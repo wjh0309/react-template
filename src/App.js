@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 function App() {
   return (
@@ -30,17 +31,20 @@ class Test extends Component {
       title: '这是标签',
     }
   }
-  tabClick(e) {
+  tabClick = (e) => {
     const el = e.nativeEvent.target;
     this.setState({title: `这是标题${el.id}`});
   }
+  
   render() {
     const { arr, title } = this.state;
+    const { arg1 } = this.props;
     const { container, myClass } = style;
+    console.log(this);
     return (
       <div>
-        <h1>{title}</h1>
-        <ul onClick={this.tabClick.bind(this)} style={container}>
+        <h1>{arg1}</h1>
+        <ul onClick={this.tabClick} style={container}>
         {
           arr.map((item, index) => {
             return (
@@ -52,6 +56,30 @@ class Test extends Component {
       </div>
     )
   }
+  static propTypes = {
+    arg1: PropTypes.string,
+    arg2: PropTypes.string.isRequired,
+    arg3: PropTypes.func
+  }
+  
+  static defaultProps = {
+    arg1: '默认标题'
+  }
+}
+
+function Demo(props) {
+  console.log(props)
+  return <div></div>
+}
+class Test1 extends Component{
+  render() {
+    let args = {
+      arg2: '',
+      arg3: () => {console.log('测试')},
+    }
+    return <Demo {...args}></Demo>
+  }
+
 }
 
 const style = {
@@ -69,4 +97,4 @@ const style = {
   }
 }
 
-export default Test;
+export default Test1;
