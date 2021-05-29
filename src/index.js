@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App'; 
-import RefsDemo from './refsDemo';
+import LifeCycleDemo from './demo/lifeCycleDemo';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RefsDemo />
+    <LifeCycleDemo />
   </React.StrictMode>,
   document.getElementById('root')
 );
